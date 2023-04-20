@@ -108,16 +108,16 @@ func (m *kubeGenericRuntimeManager) toKubeContainer(c *runtimeapi.Container) (*k
 // This is only needed because we need to return sandboxes as if they were
 // kubecontainer.Containers to avoid substantial changes to PLEG.
 // TODO: Remove this once it becomes obsolete.
-func (m *kubeGenericRuntimeManager) sandboxToKubeContainer(s *runtimeapi.PodSandbox) (*kubecontainer.Container, error) {
-	if s == nil || s.Id == "" {
-		return nil, fmt.Errorf("unable to convert a nil pointer to a runtime container")
-	}
+// func (m *kubeGenericRuntimeManager) sandboxToKubeContainer(s *runtimeapi.PodSandbox) (*kubecontainer.Container, error) {
+// 	if s == nil || s.Id == "" {
+// 		return nil, fmt.Errorf("unable to convert a nil pointer to a runtime container")
+// 	}
 
-	return &kubecontainer.Container{
-		ID:    kubecontainer.ContainerID{Type: m.runtimeName, ID: s.Id},
-		State: kubecontainer.SandboxToContainerState(s.State),
-	}, nil
-}
+// 	return &kubecontainer.Container{
+// 		ID:    kubecontainer.ContainerID{Type: m.runtimeName, ID: s.Id},
+// 		State: kubecontainer.SandboxToContainerState(s.State),
+// 	}, nil
+// }
 
 // getImageUser gets uid or user name that will run the command(s) from image. The function
 // guarantees that only one of them is set.
